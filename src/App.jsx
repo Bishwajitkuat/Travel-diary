@@ -10,12 +10,17 @@ import PageNav from "./components/PageNav";
 function App() {
   return (
     <div>
+      {/* all the Routes and Route has to be wrapped by BrowserRouter */}
       <BrowserRouter>
+        {/* Navbar or anything that will be visible in each page should be inside
+        the "BrowserRouter" but outside of "Routes" */}
         <PageNav />
+        {/* all the "Route" must be wrapped inside "Routes" only one "Route" can be render at a time */}
         <Routes>
           <Route path="/" element={<Homepage />} />
           <Route path="/pricing" element={<Pricing />} />
           <Route path="/product" element={<Product />} />
+          {/* if url does not matche any Route then "*" Route will be rendered */}
           <Route path="*" element={<PageNotFound />} />
         </Routes>
       </BrowserRouter>
