@@ -8,6 +8,7 @@ import PageNotFound from "./pages/PageNotFound";
 // import PageNav from "./components/PageNav";
 import styles from "./css/AppLayout.module.css";
 import Login from "./pages/Login";
+import AppLayout from "./components/AppLayout";
 
 function App() {
   return (
@@ -19,10 +20,20 @@ function App() {
         {/* <PageNav /> */}
         {/* all the "Route" must be wrapped inside "Routes" only one "Route" can be render at a time */}
         <Routes>
-          <Route path="/" element={<Homepage />} />
+          <Route index element={<Homepage />} />
           <Route path="/pricing" element={<Pricing />} />
           <Route path="/product" element={<Product />} />
           <Route path="/login" element={<Login />} />
+          {/* nested rout: parent route app  */}
+          <Route path="/app" element={<AppLayout />}>
+            {/* child routes */}
+            {/* index route will be the default child route if parent route is visited
+            in other words: parent ruoute's element-component's child is <Oullet/> and it's defaul value comes form index route's element component */}
+            <Route index element={<p>Index route</p>} />
+            <Route path="cities" element={<p>list of cities</p>} />
+            <Route path="countries" element={<p>List of countries</p>} />
+            <Route path="form" element={<p>form</p>} />
+          </Route>
           {/* if url does not matche any Route then "*" Route will be rendered */}
           <Route path="*" element={<PageNotFound />} />
         </Routes>
