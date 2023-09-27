@@ -9,6 +9,7 @@ import PageNotFound from "./pages/PageNotFound";
 import styles from "./css/AppLayout.module.css";
 import Login from "./pages/Login";
 import AppLayout from "./components/AppLayout";
+import CityList from "./components/CityList";
 
 function App() {
   return (
@@ -30,7 +31,7 @@ function App() {
             {/* index route will be the default child route if parent route is visited
             in other words: parent ruoute's element-component's child is <Oullet/> and it's defaul value comes form index route's element component */}
             <Route index element={<p>Index route</p>} />
-            <Route path="cities" element={<p>list of cities</p>} />
+            <Route path="cities" element={<CityList />} />
             <Route path="countries" element={<p>List of countries</p>} />
             <Route path="form" element={<p>form</p>} />
           </Route>
