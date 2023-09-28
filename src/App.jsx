@@ -12,6 +12,7 @@ import Login from "./pages/Login";
 import AppLayout from "./components/AppLayout";
 import CityList from "./components/CityList";
 import CountryList from "./components/CountryList";
+import City from "./components/City";
 
 function App() {
   const [cities, setCities] = useState([]);
@@ -51,14 +52,15 @@ function App() {
             {/* child routes */}
             {/* index route will be the default child route if parent route is visited
             in other words: parent ruoute's element-component's child is <Oullet/> and it's defaul value comes form index route's element component */}
-            <Route
+            {/* <Route
               index
               element={<CityList cities={cities} isLoading={isLoading} />}
-            />
+            /> */}
             <Route
               path="cities"
               element={<CityList cities={cities} isLoading={isLoading} />}
             />
+            <Route path="cities/:id" element={<City cities={cities} />} />
             <Route
               path="countries"
               element={<CountryList cities={cities} isLoading={isLoading} />}
