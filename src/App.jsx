@@ -10,8 +10,28 @@ import styles from "./css/AppLayout.module.css";
 import Login from "./pages/Login";
 import AppLayout from "./components/AppLayout";
 import CityList from "./components/CityList";
+import { useEffect, useState } from "react";
 
 function App() {
+  const [cities, setCities] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    async function fetchCities() {
+      try {
+        setIsLoading(true);
+        const res = await fetch("http://localhost:8000/cities");
+        const data = await res.json();
+        setCities(data);
+      } catch (error) {
+        alert(error.message);
+      } finally {
+        setIsLoading(false);
+      }
+    }
+    fetchCities();
+  }, []);
+
   return (
     <div className={styles.app}>
       {/* all the Routes and Route has to be wrapped by BrowserRouter */}
@@ -31,7 +51,10 @@ function App() {
             {/* index route will be the default child route if parent route is visited
             in other words: parent ruoute's element-component's child is <Oullet/> and it's defaul value comes form index route's element component */}
             <Route index element={<p>Index route</p>} />
-            <Route path="cities" element={<CityList />} />
+            <Route
+              path="cities"
+              element={<CityList cities={cities} isLoading={isLoading} />}
+            />
             <Route path="countries" element={<p>List of countries</p>} />
             <Route path="form" element={<p>form</p>} />
           </Route>
