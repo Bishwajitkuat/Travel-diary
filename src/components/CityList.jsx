@@ -2,13 +2,14 @@
 /* eslint-disable react/prop-types */
 import styles from "../css/CityList.module.css";
 import Spinner from "./Spinner";
+import CityItem from "./CityItem";
 
 function CityList({ cities, isLoading }) {
   if (isLoading) return <Spinner />;
   return (
     <div className={styles.CityList}>
       {cities.map((item) => (
-        <p key={item.cityName}>{item.cityName}</p>
+        <CityItem key={item.cityName} city={item} />
       ))}
     </div>
   );

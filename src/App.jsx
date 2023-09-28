@@ -50,7 +50,10 @@ function App() {
             {/* child routes */}
             {/* index route will be the default child route if parent route is visited
             in other words: parent ruoute's element-component's child is <Oullet/> and it's defaul value comes form index route's element component */}
-            <Route index element={<p>Index route</p>} />
+            <Route
+              index
+              element={<CityList cities={cities} isLoading={isLoading} />}
+            />
             <Route
               path="cities"
               element={<CityList cities={cities} isLoading={isLoading} />}
