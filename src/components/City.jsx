@@ -2,12 +2,18 @@
 import { useParams } from "react-router-dom";
 import styles from "../css/City.module.css";
 import { useCitiesContext } from "../contexts/CitiesContext";
+import { useEffect } from "react";
+// import Spinner from "./Spinner";
 
 function City() {
-  const { cities } = useCitiesContext();
-  // TEMP DATA
   const cityId = useParams();
-  const currentCity = cities.filter((item) => item.id === Number(cityId.id))[0];
+
+  const { currentCity, getCurrentCity } = useCitiesContext();
+  // TEMP DATA
+
+  useEffect(() => {
+    getCurrentCity(Number(cityId.id));
+  }, [cityId]);
 
   const formatDate = (date) =>
     new Intl.DateTimeFormat("en", {
@@ -18,7 +24,6 @@ function City() {
     }).format(new Date(date));
 
   const { cityName, emoji, date, notes } = currentCity;
-
   return (
     <div className={styles.city}>
       <div className={styles.row}>
