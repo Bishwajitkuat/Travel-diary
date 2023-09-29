@@ -23,7 +23,7 @@ const CitiesContextProvider = ({ children }) => {
     }
     fetchCities();
   }, []);
-  const data = { cities, setCities, isLoading, setIsLoading };
+  const data = { cities, isLoading };
   return (
     <CitiesContext.Provider value={data}>{children}</CitiesContext.Provider>
   );
@@ -31,6 +31,10 @@ const CitiesContextProvider = ({ children }) => {
 
 const useCitiesContext = () => {
   const context = useContext(CitiesContext);
+  if (context === undefined)
+    throw new Error(
+      "useCitiesContex is used outside of it's context or scope!!!"
+    );
   return context;
 };
 export { useCitiesContext, CitiesContextProvider };
