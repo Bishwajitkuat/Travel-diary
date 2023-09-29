@@ -1,8 +1,10 @@
 /* eslint-disable react/prop-types */
 import { useParams } from "react-router-dom";
 import styles from "../css/City.module.css";
+import { useCitiesContext } from "../contexts/CitiesContext";
 
-function City({ cities }) {
+function City() {
+  const { cities } = useCitiesContext();
   // TEMP DATA
   const cityId = useParams();
   const currentCity = cities.filter((item) => item.id === Number(cityId.id))[0];

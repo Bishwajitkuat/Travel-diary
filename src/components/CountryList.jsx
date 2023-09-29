@@ -4,8 +4,10 @@ import styles from "../css/CountryList.module.css";
 import Spinner from "./Spinner";
 import Message from "./Message";
 import CountryItem from "./CountryItem";
+import { useCitiesContext } from "../contexts/CitiesContext";
 
-function CountriesList({ cities, isLoading }) {
+function CountriesList() {
+  const { cities, isLoading } = useCitiesContext();
   // filtering out multiplae entrei of same country
   const countries = cities.reduce((acc, item) => {
     if (acc.find((city) => city.country === item.country)) {
