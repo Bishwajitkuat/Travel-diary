@@ -5,6 +5,7 @@ import styles from "../css/City.module.css";
 import { useCitiesContext } from "../contexts/CitiesContext";
 import { useEffect } from "react";
 import Spinner from "./Spinner";
+import BackButton from "./BackButton";
 
 function City() {
   const { id } = useParams();
@@ -56,7 +57,9 @@ function City() {
         </a>
       </div>
 
-      <div>{/* <ButtonBack /> */}</div>
+      <div>
+        <BackButton />
+      </div>
     </div>
   );
 }
