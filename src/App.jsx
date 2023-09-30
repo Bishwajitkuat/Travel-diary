@@ -7,7 +7,7 @@ import Pricing from "./pages/Pricing";
 import Homepage from "./pages/Homepage";
 import PageNotFound from "./pages/PageNotFound";
 // import PageNav from "./components/PageNav";
-import styles from "./css/AppLayout.module.css";
+// import styles from "./css/AppLayout.module.css";
 import Login from "./pages/Login";
 import AppLayout from "./components/AppLayout";
 import CityList from "./components/CityList";
@@ -18,7 +18,7 @@ import Form from "./components/Form";
 function App() {
   return (
     <CitiesContextProvider>
-      <div className={styles.app}>
+      <div>
         {/* all the Routes and Route has to be wrapped by BrowserRouter */}
         <BrowserRouter>
           {/* Navbar or anything that will be visible in each page should be inside
