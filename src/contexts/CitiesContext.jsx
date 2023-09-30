@@ -29,15 +29,14 @@ const CitiesContextProvider = ({ children }) => {
 
   const getCurrentCity = async (id) => {
     try {
-      console.log(id);
-
+      setIsLoading(true);
       const res = await fetch(`http://localhost:8000/cities/${id}`);
       const data = await res.json();
-      console.log(data);
       setCurrentCity(data);
     } catch (error) {
       alert(error.message);
     } finally {
+      setIsLoading(false);
     }
   };
 

@@ -1,16 +1,14 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
 import { useParams } from "react-router-dom";
 import styles from "../css/City.module.css";
 import { useCitiesContext } from "../contexts/CitiesContext";
 import { useEffect } from "react";
-// import Spinner from "./Spinner";
+import Spinner from "./Spinner";
 
 function City() {
   const cityId = useParams();
-
-  const { currentCity, getCurrentCity } = useCitiesContext();
-  // TEMP DATA
-
+  const { currentCity, getCurrentCity, isLoading } = useCitiesContext();
   useEffect(() => {
     getCurrentCity(Number(cityId.id));
   }, [cityId]);
@@ -23,6 +21,8 @@ function City() {
       weekday: "long",
     }).format(new Date(date));
 
+  // if currentCity data yet not being featched, early return to prevent destructuring of undefined currentCity object
+  if (!currentCity || isLoading) return <Spinner />;
   const { cityName, emoji, date, notes } = currentCity;
   return (
     <div className={styles.city}>
