@@ -7,11 +7,11 @@ import { useEffect } from "react";
 import Spinner from "./Spinner";
 
 function City() {
-  const cityId = useParams();
+  const { id } = useParams();
   const { currentCity, getCurrentCity, isLoading } = useCitiesContext();
   useEffect(() => {
-    getCurrentCity(Number(cityId.id));
-  }, [cityId]);
+    getCurrentCity(Number(id));
+  }, [id]);
 
   const formatDate = (date) =>
     new Intl.DateTimeFormat("en", {
