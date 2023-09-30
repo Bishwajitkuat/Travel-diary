@@ -1,22 +1,29 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 import { useNavigate, useSearchParams } from "react-router-dom";
 import styles from "../css/Map.module.css";
-import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
-import { useState } from "react";
+import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
+import { useEffect, useState } from "react";
 import { useCitiesContext } from "../contexts/CitiesContext";
 
 function Map() {
-  const [searchParam, setSearchParam] = useSearchParams();
+  const [searchParam] = useSearchParams();
   const navigate = useNavigate();
-  const [mapPosition, setMapPosition] = useState([40, 0]);
+  const [mapPosition, setMapPosition] = useState([64, 28]);
   const { cities } = useCitiesContext();
+  const cityLat = searchParam.get("lat");
+  const cityLng = searchParam.get("lng");
+
+  useEffect(() => {
+    if ((cityLat, cityLng)) setMapPosition([cityLat, cityLng]);
+  }, [cityLat, cityLng]);
 
   return (
     <div className={styles.mapContainer}>
       <MapContainer
         className={styles.map}
         center={mapPosition}
-        zoom={13}
+        zoom={5}
         // if true, map  zoom in or out upon mouse wheel scroll
         scrollWheelZoom={true}
       >
@@ -35,9 +42,22 @@ function Map() {
             </Popup>
           </Marker>
         ))}
+        {/* if mapPosition state updated, ChangeCenter component will be rerendered with new position */}
+        <ChangeCenter position={mapPosition} />
       </MapContainer>
     </div>
   );
 }
+
+// by default, the data change which used in leaflet component does not actually rerender the component, we  have to make custome componet to change the view
+
+const ChangeCenter = ({ position }) => {
+  // use map hook gives the current instance of map component
+  const map = useMap();
+  // setView() method of map rerender the map based on given data
+  map.setView(position);
+  // it is a component it must return something
+  return null;
+};
 
 export default Map;
