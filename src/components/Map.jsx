@@ -2,13 +2,19 @@
 /* eslint-disable no-unused-vars */
 import { useNavigate, useSearchParams } from "react-router-dom";
 import styles from "../css/Map.module.css";
-import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
+import {
+  MapContainer,
+  TileLayer,
+  Marker,
+  Popup,
+  useMap,
+  useMapEvents,
+} from "react-leaflet";
 import { useEffect, useState } from "react";
 import { useCitiesContext } from "../contexts/CitiesContext";
 
 function Map() {
   const [searchParam] = useSearchParams();
-  const navigate = useNavigate();
   const [mapPosition, setMapPosition] = useState([64, 28]);
   const { cities } = useCitiesContext();
   const cityLat = searchParam.get("lat");
@@ -44,6 +50,7 @@ function Map() {
         ))}
         {/* if mapPosition state updated, ChangeCenter component will be rerendered with new position */}
         <ChangeCenter position={mapPosition} />
+        <DetectClick />
       </MapContainer>
     </div>
   );
@@ -58,6 +65,16 @@ const ChangeCenter = ({ position }) => {
   map.setView(position);
   // it is a component it must return something
   return null;
+};
+
+// compoent to delect clive event from Map compoent
+
+const DetectClick = () => {
+  const navigate = useNavigate();
+  // useMapEvents() is a hook provided by leaflet, which takes argument as an opject where key is the event name and value is call back function for some action
+  useMapEvents({
+    click: (e) => navigate(`form`),
+  });
 };
 
 export default Map;
