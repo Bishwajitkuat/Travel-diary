@@ -61,10 +61,14 @@ function Form() {
     fetchCityData(lat, lng);
   }, [lat, lng]);
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  };
+
   if (geocodeError) return <Message message={geocodeError} />;
   if (isLoadingCityData) return <Spinner />;
   return (
-    <form className={styles.form}>
+    <form className={styles.form} onSubmit={handleSubmit}>
       <div className={styles.row}>
         <label htmlFor="cityName">City name</label>
         <input
