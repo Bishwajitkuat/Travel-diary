@@ -33,6 +33,9 @@ function Form() {
   useEffect(() => {
     const fetchCityData = async (lati, lngi) => {
       try {
+        // if user access the Form component without lat and lng param, throw new error
+        if (!lati && !lngi)
+          throw new Error("Please clik somewhere on the map to add new city");
         setIsLoadingCityData(true);
         setGeocodeError("");
         const res = await fetch(
