@@ -7,6 +7,7 @@ import styles from "../css/Form.module.css";
 import Button from "./Button";
 import BackButton from "./BackButton";
 import { useSearchParams } from "react-router-dom";
+import { useUrlLocation } from "../hooks/useUrlLocation";
 
 export function convertToEmoji(countryCode) {
   const codePoints = countryCode
@@ -22,9 +23,8 @@ function Form() {
   const [date, setDate] = useState(new Date());
   const [notes, setNotes] = useState("");
   const [searchParam] = useSearchParams();
-
-  const lat = searchParam.get("lat");
-  const lng = searchParam.get("lng");
+  // useUrlLocation() coustom hook is used to get lat and lng values from searchParams
+  const { lat, lng } = useUrlLocation();
 
   return (
     <form className={styles.form}>
