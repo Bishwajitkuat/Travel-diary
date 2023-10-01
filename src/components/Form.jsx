@@ -65,6 +65,19 @@ function Form() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (!cityName || !date) {
+      alert("Both city name and date are required");
+      return;
+    }
+    const newCity = {
+      cityName,
+      country,
+      date,
+      emoji,
+      notes,
+      position: { lat, lng },
+    };
+    console.log(newCity);
   };
 
   if (geocodeError) return <Message message={geocodeError} />;
