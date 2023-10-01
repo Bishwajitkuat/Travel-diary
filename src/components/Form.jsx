@@ -10,6 +10,8 @@ import { useSearchParams } from "react-router-dom";
 import { useUrlLocation } from "../hooks/useUrlLocation";
 import Message from "./Message";
 import Spinner from "./Spinner";
+import "react-datepicker/dist/react-datepicker.css";
+import DatePicker from "react-datepicker";
 
 export function convertToEmoji(countryCode) {
   const codePoints = countryCode
