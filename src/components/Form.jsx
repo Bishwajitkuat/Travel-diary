@@ -8,6 +8,8 @@ import Button from "./Button";
 import BackButton from "./BackButton";
 import { useSearchParams } from "react-router-dom";
 import { useUrlLocation } from "../hooks/useUrlLocation";
+import Message from "./Message";
+import Spinner from "./Spinner";
 
 export function convertToEmoji(countryCode) {
   const codePoints = countryCode
@@ -23,6 +25,8 @@ function Form() {
   const [date, setDate] = useState(new Date());
   const [notes, setNotes] = useState("");
   const [isLoadingCityData, setIsLoadingCityData] = useState(false);
+  const [emoji, setEmoji] = useState("");
+  const [geocodeError, setGeocodeError] = useState("");
   // useUrlLocation() coustom hook is used to get lat and lng values from searchParams
   const { lat, lng } = useUrlLocation();
 
@@ -30,14 +34,21 @@ function Form() {
     const fetchCityData = async (lati, lngi) => {
       try {
         setIsLoadingCityData(true);
-        console.log(lati, lngi);
+        setGeocodeError("");
         const res = await fetch(
           `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lati}&longitude=${lngi}`
         );
         const data = await res.json();
-        console.log(data);
+        if (data.city === "" || data.countryCode === "")
+          throw new Error(
+            "Seleted location is not a city or country. Please select a city!"
+          );
+        setCountry(data.countryName);
+        setCityName(data.city);
+        setEmoji(convertToEmoji(data.countryCode));
       } catch (error) {
-        alert(error.message);
+        setGeocodeError(error.message);
+        console.log(error.message);
       } finally {
         setIsLoadingCityData(false);
       }
@@ -45,6 +56,8 @@ function Form() {
     fetchCityData(lat, lng);
   }, [lat, lng]);
 
+  if (geocodeError) return <Message message={geocodeError} />;
+  if (isLoadingCityData) return <Spinner />;
   return (
     <form className={styles.form}>
       <div className={styles.row}>
@@ -54,7 +67,7 @@ function Form() {
           onChange={(e) => setCityName(e.target.value)}
           value={cityName}
         />
-        {/* <span className={styles.flag}>{emoji}</span> */}
+        <span className={styles.flag}>{emoji}</span>
       </div>
 
       <div className={styles.row}>
