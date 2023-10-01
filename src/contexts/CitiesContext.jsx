@@ -50,7 +50,7 @@ const CitiesContextProvider = ({ children }) => {
         headers: { "Content-Type": "application/json" },
       });
       const data = await res.json();
-      console.log(data);
+      setCities((cities) => [...cities, data]);
     } catch (error) {
       alert(error.message);
     } finally {

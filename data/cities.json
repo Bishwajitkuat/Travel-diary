@@ -47,6 +47,42 @@
         "lng": "24.95102827277831"
       },
       "id": 98443198
+    },
+    {
+      "cityName": "Saue vald",
+      "country": "Estonia",
+      "date": "2023-10-01T11:56:08.683Z",
+      "emoji": "🇪🇪",
+      "notes": "dfdfdfd",
+      "position": {
+        "lat": "59.218102795300304",
+        "lng": "24.62039772008421"
+      },
+      "id": 98443199
+    },
+    {
+      "cityName": "Haninge",
+      "country": "Sweden",
+      "date": "2023-10-01T11:57:54.405Z",
+      "emoji": "🇸🇪",
+      "notes": "last year",
+      "position": {
+        "lat": "59.03766207622457",
+        "lng": "18.241243106194815"
+      },
+      "id": 98443200
+    },
+    {
+      "cityName": "Roa",
+      "country": "Norway",
+      "date": "2023-10-01T11:59:32.895Z",
+      "emoji": "🇳🇴",
+      "notes": "dfdfsdfds",
+      "position": {
+        "lat": "60.23748190193369",
+        "lng": "10.725333080776121"
+      },
+      "id": 98443201
     }
   ]
 }
