@@ -13,16 +13,19 @@ import {
 import { useEffect, useState } from "react";
 import { useCitiesContext } from "../contexts/CitiesContext";
 import { useGeolocation } from "../hooks/useGeolocation";
+import Button from "./Button";
 
 function Map() {
   const [searchParam] = useSearchParams();
   const [mapPosition, setMapPosition] = useState([64, 28]);
   const { cities } = useCitiesContext();
+  // useGeolocation coustom hook
   const {
     isLoading: isLoadingPosition,
     position: geolocationPosition,
     getPosition,
   } = useGeolocation();
+  // getting lat and lng value from search params
   const cityLat = searchParam.get("lat");
   const cityLng = searchParam.get("lng");
 
@@ -30,8 +33,17 @@ function Map() {
     if ((cityLat, cityLng)) setMapPosition([cityLat, cityLng]);
   }, [cityLat, cityLng]);
 
+  // when useGeolocation is useed to retrieved the use's current location set it to it's own state. with useEffect() I am syncronizing geolocationPosition to Map's mapPosition states
+  useEffect(() => {
+    if (geolocationPosition)
+      setMapPosition([geolocationPosition.lat, geolocationPosition.lng]);
+  }, [geolocationPosition]);
+
   return (
     <div className={styles.mapContainer}>
+      <Button type="position" onClick={getPosition}>
+        {isLoadingPosition ? "Loading..." : "You location"}
+      </Button>
       <MapContainer
         className={styles.map}
         center={mapPosition}
