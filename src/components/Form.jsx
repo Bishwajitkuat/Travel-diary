@@ -25,7 +25,7 @@ function Form() {
 
   const lat = searchParam.get("lat");
   const lng = searchParam.get("lng");
-  console.log(lat, lng);
+
   return (
     <form className={styles.form}>
       <div className={styles.row}>

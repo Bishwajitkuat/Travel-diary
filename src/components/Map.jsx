@@ -73,7 +73,9 @@ const DetectClick = () => {
   const navigate = useNavigate();
   // useMapEvents() is a hook provided by leaflet, which takes argument as an opject where key is the event name and value is call back function for some action
   useMapEvents({
-    click: (e) => navigate(`form?lat=${e.latlng.lat}&lng=${e.latlng.lng}`),
+    click: (e) => {
+      navigate(`form?lat=${e.latlng.lat}&lng=${e.latlng.lng}`);
+    },
   });
 };
 
