@@ -12,6 +12,7 @@ import Message from "./Message";
 import Spinner from "./Spinner";
 import "react-datepicker/dist/react-datepicker.css";
 import DatePicker from "react-datepicker";
+import { useCitiesContext } from "../contexts/CitiesContext";
 
 export function convertToEmoji(countryCode) {
   const codePoints = countryCode
@@ -31,6 +32,7 @@ function Form() {
   const [geocodeError, setGeocodeError] = useState("");
   // useUrlLocation() coustom hook is used to get lat and lng values from searchParams
   const { lat, lng } = useUrlLocation();
+  const { postnewCity } = useCitiesContext();
 
   useEffect(() => {
     const fetchCityData = async (lati, lngi) => {
@@ -78,6 +80,7 @@ function Form() {
       position: { lat, lng },
     };
     console.log(newCity);
+    postnewCity(newCity);
   };
 
   if (geocodeError) return <Message message={geocodeError} />;
