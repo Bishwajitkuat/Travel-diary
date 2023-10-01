@@ -83,6 +83,30 @@
         "lng": "10.725333080776121"
       },
       "id": 98443201
+    },
+    {
+      "cityName": "Porsgrunn",
+      "country": "Norway",
+      "date": "2023-10-01T12:05:36.224Z",
+      "emoji": "🇳🇴",
+      "notes": "dfsdfds",
+      "position": {
+        "lat": "59.141460917712855",
+        "lng": "9.651894371080433"
+      },
+      "id": 98443202
+    },
+    {
+      "cityName": "Vantaa",
+      "country": "Finland",
+      "date": "2023-10-01T12:07:14.386Z",
+      "emoji": "🇫🇮",
+      "notes": "dfsfdsfdf",
+      "position": {
+        "lat": "60.293555521680304",
+        "lng": "25.054694559366173"
+      },
+      "id": 98443203
     }
   ]
 }

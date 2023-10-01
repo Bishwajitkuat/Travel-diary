@@ -6,13 +6,13 @@ import { useEffect, useState } from "react";
 import styles from "../css/Form.module.css";
 import Button from "./Button";
 import BackButton from "./BackButton";
-import { useSearchParams } from "react-router-dom";
 import { useUrlLocation } from "../hooks/useUrlLocation";
 import Message from "./Message";
 import Spinner from "./Spinner";
 import "react-datepicker/dist/react-datepicker.css";
 import DatePicker from "react-datepicker";
 import { useCitiesContext } from "../contexts/CitiesContext";
+import { useNavigate } from "react-router-dom";
 
 export function convertToEmoji(countryCode) {
   const codePoints = countryCode
@@ -23,6 +23,7 @@ export function convertToEmoji(countryCode) {
 }
 
 function Form() {
+  const navigate = useNavigate();
   const [cityName, setCityName] = useState("");
   const [country, setCountry] = useState("");
   const [date, setDate] = useState(new Date());
@@ -32,7 +33,7 @@ function Form() {
   const [geocodeError, setGeocodeError] = useState("");
   // useUrlLocation() coustom hook is used to get lat and lng values from searchParams
   const { lat, lng } = useUrlLocation();
-  const { postnewCity } = useCitiesContext();
+  const { postnewCity, isLoading } = useCitiesContext();
 
   useEffect(() => {
     const fetchCityData = async (lati, lngi) => {
@@ -81,12 +82,16 @@ function Form() {
     };
     console.log(newCity);
     postnewCity(newCity);
+    navigate("/app");
   };
 
   if (geocodeError) return <Message message={geocodeError} />;
   if (isLoadingCityData) return <Spinner />;
   return (
-    <form className={styles.form} onSubmit={handleSubmit}>
+    <form
+      className={`${styles.form} ${isLoading ? styles.loading : ""}`}
+      onSubmit={handleSubmit}
+    >
       <div className={styles.row}>
         <label htmlFor="cityName">City name</label>
         <input
