@@ -2,7 +2,7 @@
 /* eslint-disable react-refresh/only-export-components */
 // "https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=0&longitude=0"
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "../css/Form.module.css";
 import Button from "./Button";
 import BackButton from "./BackButton";
@@ -22,9 +22,28 @@ function Form() {
   const [country, setCountry] = useState("");
   const [date, setDate] = useState(new Date());
   const [notes, setNotes] = useState("");
-  const [searchParam] = useSearchParams();
+  const [isLoadingCityData, setIsLoadingCityData] = useState(false);
   // useUrlLocation() coustom hook is used to get lat and lng values from searchParams
   const { lat, lng } = useUrlLocation();
+
+  useEffect(() => {
+    const fetchCityData = async (lati, lngi) => {
+      try {
+        setIsLoadingCityData(true);
+        console.log(lati, lngi);
+        const res = await fetch(
+          `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lati}&longitude=${lngi}`
+        );
+        const data = await res.json();
+        console.log(data);
+      } catch (error) {
+        alert(error.message);
+      } finally {
+        setIsLoadingCityData(false);
+      }
+    };
+    fetchCityData(lat, lng);
+  }, [lat, lng]);
 
   return (
     <form className={styles.form}>
