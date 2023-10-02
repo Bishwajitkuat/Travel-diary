@@ -6,8 +6,6 @@ import Product from "./pages/Product";
 import Pricing from "./pages/Pricing";
 import Homepage from "./pages/Homepage";
 import PageNotFound from "./pages/PageNotFound";
-// import PageNav from "./components/PageNav";
-// import styles from "./css/AppLayout.module.css";
 import Login from "./pages/Login";
 import AppLayout from "./components/AppLayout";
 import CityList from "./components/CityList";
@@ -15,6 +13,7 @@ import CountryList from "./components/CountryList";
 import City from "./components/City";
 import Form from "./components/Form";
 import { AuthContextProvider } from "./contexts/AuthContext";
+import ProtectedRoutes from "./routes/ProtectedRoutes";
 
 function App() {
   return (
@@ -33,7 +32,16 @@ function App() {
               <Route path="/product" element={<Product />} />
               <Route path="/login" element={<Login />} />
               {/* nested rout: parent route app  */}
-              <Route path="/app" element={<AppLayout />}>
+
+              <Route
+                path="/app"
+                // AppLayout is the child of RrotectedRoutes, AppLayout only be rendered if the user is authenticated
+                element={
+                  <ProtectedRoutes>
+                    <AppLayout />
+                  </ProtectedRoutes>
+                }
+              >
                 {/* child routes */}
                 {/* index route will be the default child route if parent route is visited
             in other words: parent ruoute's element-component's child is <Oullet/> and it's defaul value comes form index route's element component */}
@@ -47,6 +55,7 @@ function App() {
                 <Route path="countries" element={<CountryList />} />
                 <Route path="form" element={<Form />} />
               </Route>
+
               {/* if url does not matche any Route then "*" Route will be rendered */}
               <Route path="*" element={<PageNotFound />} />
             </Routes>
