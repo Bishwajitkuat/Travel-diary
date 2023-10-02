@@ -107,6 +107,66 @@
         "lng": "25.054694559366173"
       },
       "id": 98443203
+    },
+    {
+      "cityName": "Oulu",
+      "country": "Finland",
+      "date": "2023-10-02T17:27:14.754Z",
+      "emoji": "🇫🇮",
+      "notes": "sfdfdsfdf",
+      "position": {
+        "lat": "65.01195404578009",
+        "lng": "25.47042480232875"
+      },
+      "id": 98443204
+    },
+    {
+      "cityName": "Sonkajarvi",
+      "country": "Finland",
+      "date": "2023-10-02T17:31:44.607Z",
+      "emoji": "🇫🇮",
+      "notes": "dfsdfdfdf",
+      "position": {
+        "lat": "63.97112998558545",
+        "lng": "27.168255392839086"
+      },
+      "id": 98443205
+    },
+    {
+      "cityName": "Viitasaari",
+      "country": "Finland",
+      "date": "2023-10-02T17:33:30.278Z",
+      "emoji": "🇫🇮",
+      "notes": "fsfdsfds",
+      "position": {
+        "lat": "63.02224127273422",
+        "lng": "26.19593107732479"
+      },
+      "id": 98443206
+    },
+    {
+      "cityName": "Ornskoldsvik",
+      "country": "Sweden",
+      "date": "2023-10-02T17:37:18.999Z",
+      "emoji": "🇸🇪",
+      "notes": "fsdfsdffds",
+      "position": {
+        "lat": "63.33688239911065",
+        "lng": "18.721335940734853"
+      },
+      "id": 98443207
+    },
+    {
+      "cityName": "Kramfors",
+      "country": "Sweden",
+      "date": "2023-10-02T17:38:42.936Z",
+      "emoji": "🇸🇪",
+      "notes": "dfsfdsfs",
+      "position": {
+        "lat": "63.09778253861559",
+        "lng": "18.150480121293803"
+      },
+      "id": 98443208
     }
   ]
 }

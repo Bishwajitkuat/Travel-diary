@@ -66,7 +66,9 @@ function Form() {
     fetchCityData(lat, lng);
   }, [lat, lng]);
 
-  const handleSubmit = (e) => {
+  // as postnewCity() is a async function, we need to make handleSubmit() function and await for postnewCity() call before it navigate to app
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!cityName || !date) {
       alert("Both city name and date are required");
@@ -80,9 +82,9 @@ function Form() {
       notes,
       position: { lat, lng },
     };
-    console.log(newCity);
-    postnewCity(newCity);
-    navigate("/app");
+    // postnewCity function call make a post request with newCity object, and return response.ok true or false, if response.ok is true, it will navigate to app
+    const res = await postnewCity(newCity);
+    if (res) navigate("/app");
   };
 
   if (geocodeError) return <Message message={geocodeError} />;

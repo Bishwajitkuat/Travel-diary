@@ -51,6 +51,7 @@ const CitiesContextProvider = ({ children }) => {
       });
       const data = await res.json();
       setCities((cities) => [...cities, data]);
+      return res.ok;
     } catch (error) {
       alert(error.message);
     } finally {
