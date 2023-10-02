@@ -50,8 +50,11 @@ const CitiesContextProvider = ({ children }) => {
         headers: { "Content-Type": "application/json" },
       });
       const data = await res.json();
-      setCities((cities) => [...cities, data]);
-      return res.ok;
+      // if post request is successful only then I want to add the new city to the current state
+      if (res.ok) {
+        setCities((cities) => [...cities, data]);
+        return res.ok;
+      }
     } catch (error) {
       alert(error.message);
     } finally {
