@@ -61,7 +61,33 @@ const CitiesContextProvider = ({ children }) => {
       setIsLoading(false);
     }
   };
-  const data = { cities, isLoading, currentCity, getCurrentCity, postnewCity };
+
+  // DELETE request ot delete city
+
+  const deleteCity = async (id) => {
+    try {
+      setIsLoading(true);
+      const res = await fetch(`http://localhost:8000/cities/${id}`, {
+        method: "DELETE",
+      });
+      // if delete request is successful only then I want to  synce with current state
+      if (res.ok) {
+        setCities((cities) => cities.filter((city) => city.id != id));
+      }
+    } catch (error) {
+      alert(error.message);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+  const data = {
+    cities,
+    isLoading,
+    currentCity,
+    getCurrentCity,
+    postnewCity,
+    deleteCity,
+  };
   return (
     <CitiesContext.Provider value={data}>{children}</CitiesContext.Provider>
   );

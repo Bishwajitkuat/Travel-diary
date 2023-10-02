@@ -12,12 +12,12 @@ const formatDate = (date) =>
   }).format(new Date(date));
 
 function CityItem({ city }) {
-  const { currentCity } = useCitiesContext();
+  const { currentCity, deleteCity } = useCitiesContext();
   const { cityName, emoji, date, id, position } = city;
   // event handeler to to call deleteCity() method from CitiesContex
   const handleDeleteCity = (e) => {
     e.preventDefault();
-    console.log("request to delete : ", id);
+    deleteCity(id);
   };
   return (
     <NavLink

@@ -1,184 +1,40 @@
 {
   "cities": [
     {
-      "cityName": "Lisbon",
-      "country": "Portugal",
-      "emoji": "🇵🇹",
-      "date": "2027-10-31T15:59:59.138Z",
-      "notes": "My favorite city so far!",
-      "position": {
-        "lat": 38.727881642324164,
-        "lng": -9.140900099907554
-      },
-      "id": 73930385
-    },
-    {
-      "cityName": "Madrid",
-      "country": "Spain",
-      "emoji": "🇪🇸",
-      "date": "2027-07-15T08:22:53.976Z",
-      "notes": "",
-      "position": {
-        "lat": 40.46635901755316,
-        "lng": -3.7133789062500004
-      },
-      "id": 17806751
-    },
-    {
-      "cityName": "Berlin",
-      "country": "Germany",
-      "emoji": "🇩🇪",
-      "date": "2027-02-12T09:24:11.863Z",
-      "notes": "Amazing 😃",
-      "position": {
-        "lat": 52.53586782505711,
-        "lng": 13.376933665713324
-      },
-      "id": 98443197
-    },
-    {
       "cityName": "Helsinki",
       "country": "Finland",
-      "date": "2023-10-01T11:49:32.136Z",
+      "date": "2023-10-02T18:33:23.476Z",
       "emoji": "🇫🇮",
-      "notes": "I live in here",
+      "notes": "I live in here. It's a nice city.",
       "position": {
-        "lat": "60.168546468882994",
-        "lng": "24.95102827277831"
+        "lat": "60.17087049212596",
+        "lng": "24.947159352616712"
       },
-      "id": 98443198
+      "id": 1
     },
     {
-      "cityName": "Saue vald",
-      "country": "Estonia",
-      "date": "2023-10-01T11:56:08.683Z",
-      "emoji": "🇪🇪",
-      "notes": "dfdfdfd",
-      "position": {
-        "lat": "59.218102795300304",
-        "lng": "24.62039772008421"
-      },
-      "id": 98443199
-    },
-    {
-      "cityName": "Haninge",
+      "cityName": "Stockholm",
       "country": "Sweden",
-      "date": "2023-10-01T11:57:54.405Z",
+      "date": "2019-05-20T18:34:05.000Z",
       "emoji": "🇸🇪",
-      "notes": "last year",
+      "notes": "Nice city!",
       "position": {
-        "lat": "59.03766207622457",
-        "lng": "18.241243106194815"
+        "lat": "59.25977136141023",
+        "lng": "18.075156269768474"
       },
-      "id": 98443200
+      "id": 2
     },
     {
-      "cityName": "Roa",
+      "cityName": "Bergen",
       "country": "Norway",
-      "date": "2023-10-01T11:59:32.895Z",
+      "date": "2019-05-20T18:35:08.000Z",
       "emoji": "🇳🇴",
-      "notes": "dfdfsdfds",
+      "notes": "Wonderful city!",
       "position": {
-        "lat": "60.23748190193369",
-        "lng": "10.725333080776121"
+        "lat": "60.49945872729097",
+        "lng": "5.357256269121487"
       },
-      "id": 98443201
-    },
-    {
-      "cityName": "Porsgrunn",
-      "country": "Norway",
-      "date": "2023-10-01T12:05:36.224Z",
-      "emoji": "🇳🇴",
-      "notes": "dfsdfds",
-      "position": {
-        "lat": "59.141460917712855",
-        "lng": "9.651894371080433"
-      },
-      "id": 98443202
-    },
-    {
-      "cityName": "Vantaa",
-      "country": "Finland",
-      "date": "2023-10-01T12:07:14.386Z",
-      "emoji": "🇫🇮",
-      "notes": "dfsfdsfdf",
-      "position": {
-        "lat": "60.293555521680304",
-        "lng": "25.054694559366173"
-      },
-      "id": 98443203
-    },
-    {
-      "cityName": "Oulu",
-      "country": "Finland",
-      "date": "2023-10-02T17:27:14.754Z",
-      "emoji": "🇫🇮",
-      "notes": "sfdfdsfdf",
-      "position": {
-        "lat": "65.01195404578009",
-        "lng": "25.47042480232875"
-      },
-      "id": 98443204
-    },
-    {
-      "cityName": "Sonkajarvi",
-      "country": "Finland",
-      "date": "2023-10-02T17:31:44.607Z",
-      "emoji": "🇫🇮",
-      "notes": "dfsdfdfdf",
-      "position": {
-        "lat": "63.97112998558545",
-        "lng": "27.168255392839086"
-      },
-      "id": 98443205
-    },
-    {
-      "cityName": "Viitasaari",
-      "country": "Finland",
-      "date": "2023-10-02T17:33:30.278Z",
-      "emoji": "🇫🇮",
-      "notes": "fsfdsfds",
-      "position": {
-        "lat": "63.02224127273422",
-        "lng": "26.19593107732479"
-      },
-      "id": 98443206
-    },
-    {
-      "cityName": "Ornskoldsvik",
-      "country": "Sweden",
-      "date": "2023-10-02T17:37:18.999Z",
-      "emoji": "🇸🇪",
-      "notes": "fsdfsdffds",
-      "position": {
-        "lat": "63.33688239911065",
-        "lng": "18.721335940734853"
-      },
-      "id": 98443207
-    },
-    {
-      "cityName": "Kramfors",
-      "country": "Sweden",
-      "date": "2023-10-02T17:38:42.936Z",
-      "emoji": "🇸🇪",
-      "notes": "dfsfdsfs",
-      "position": {
-        "lat": "63.09778253861559",
-        "lng": "18.150480121293803"
-      },
-      "id": 98443208
-    },
-    {
-      "cityName": "Rovaniemi",
-      "country": "Finland",
-      "date": "2023-10-02T18:04:08.380Z",
-      "emoji": "🇫🇮",
-      "notes": "dfsdfsd",
-      "position": {
-        "lat": "66.97856956799949",
-        "lng": "26.02441567992039"
-      },
-      "id": 98443209
+      "id": 3
     }
   ]
 }
