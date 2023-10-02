@@ -31,7 +31,6 @@ const AuthContextProvider = ({ children }) => {
   const login = (email, password) => {
     if (email === test_user.email && password === test_user.password) {
       dispatch({ type: "logedin", payload: test_user });
-      console.log("login fuc called");
     }
   };
 
