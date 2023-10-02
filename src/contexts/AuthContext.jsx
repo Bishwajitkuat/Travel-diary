@@ -25,11 +25,13 @@ const AuthContextProvider = ({ children }) => {
     name: "Bisso",
     email: "bisso@test.com",
     password: "pass",
+    avatar: "https://i.pravatar.cc/100?u=zz",
   };
 
   const login = (email, password) => {
     if (email === test_user.email && password === test_user.password) {
       dispatch({ type: "logedin", payload: test_user });
+      console.log("login fuc called");
     }
   };
 
@@ -38,7 +40,7 @@ const AuthContextProvider = ({ children }) => {
   };
 
   return (
-    <AuthContext.Provider value={(user, isAuthenticated, login, logout)}>
+    <AuthContext.Provider value={{ user, isAuthenticated, login, logout }}>
       {children}
     </AuthContext.Provider>
   );

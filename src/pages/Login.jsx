@@ -1,17 +1,24 @@
 import { useState } from "react";
 import PageNav from "../components/PageNav";
+import Button from "../components/Button";
 
 import styles from "../css/Login.module.css";
+import { useAuth } from "../contexts/AuthContext";
 
 export default function Login() {
   // PRE-FILL FOR DEV PURPOSES
-  const [email, setEmail] = useState("jack@example.com");
-  const [password, setPassword] = useState("qwerty");
+  const [email, setEmail] = useState("bisso@test.com");
+  const [password, setPassword] = useState("pass");
+  const { login } = useAuth();
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    login(email, password);
+  };
 
   return (
     <main className={styles.login}>
       <PageNav />
-      <form className={styles.form}>
+      <form className={styles.form} onSubmit={handleSubmit}>
         <div className={styles.row}>
           <label htmlFor="email">Email address</label>
           <input
@@ -33,7 +40,7 @@ export default function Login() {
         </div>
 
         <div>
-          <button>Login</button>
+          <Button type="primary">Login</Button>
         </div>
       </form>
     </main>
