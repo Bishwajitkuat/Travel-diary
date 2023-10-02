@@ -1,20 +1,27 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import PageNav from "../components/PageNav";
 import Button from "../components/Button";
 
 import styles from "../css/Login.module.css";
 import { useAuth } from "../contexts/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 export default function Login() {
   // PRE-FILL FOR DEV PURPOSES
   const [email, setEmail] = useState("bisso@test.com");
   const [password, setPassword] = useState("pass");
-  const { login } = useAuth();
+  const { login, isAuthenticated } = useAuth();
+  const navigate = useNavigate();
   const handleSubmit = (e) => {
     e.preventDefault();
     login(email, password);
   };
-
+  useEffect(() => {
+    if (isAuthenticated) {
+      //if {replace: true} is not used in navigate back in browser will take to Login and as isAuthenticated is true it will got back in app
+      navigate("/app", { replace: true });
+    }
+  }, [isAuthenticated, navigate]);
   return (
     <main className={styles.login}>
       <PageNav />
