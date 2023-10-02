@@ -35,6 +35,18 @@
         "lng": "5.357256269121487"
       },
       "id": 3
+    },
+    {
+      "cityName": "Utsjoki",
+      "country": "Finland",
+      "date": "2023-10-02T19:40:41.731Z",
+      "emoji": "🇫🇮",
+      "notes": "A good place to observe the Northern Lights!",
+      "position": {
+        "lat": "69.9081102972402",
+        "lng": "27.02585865789494"
+      },
+      "id": 4
     }
   ]
 }
