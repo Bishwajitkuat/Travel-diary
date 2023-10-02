@@ -14,6 +14,11 @@ const formatDate = (date) =>
 function CityItem({ city }) {
   const { currentCity } = useCitiesContext();
   const { cityName, emoji, date, id, position } = city;
+  // event handeler to to call deleteCity() method from CitiesContex
+  const handleDeleteCity = (e) => {
+    e.preventDefault();
+    console.log("request to delete : ", id);
+  };
   return (
     <NavLink
       className={`${styles.cityItem} ${
@@ -24,7 +29,9 @@ function CityItem({ city }) {
       <span className={styles.emoji}>{emoji}</span>
       <h3 className={styles.name}>{cityName}</h3>
       <time className={styles.date}>{formatDate(date)}</time>
-      <button className={styles.deleteBtn}>&times;</button>
+      <button className={styles.deleteBtn} onClick={(e) => handleDeleteCity(e)}>
+        &times;
+      </button>
     </NavLink>
   );
 }
